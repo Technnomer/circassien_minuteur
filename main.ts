@@ -1,6 +1,3 @@
-/**
- * Pour les rubans 30 Leds penser à enlever les ordres non nécessaire du démarrage
- */
 function Poste_5 () {
     for (let index = 0; index <= 60; index++) {
         strip0.setPixelColor(index, neopixel.colors(NeoPixelColors.Green))
@@ -82,7 +79,7 @@ radio.onReceivedNumber(function (receivedNumber) {
             . . . . .
             . . . . .
             `)
-        Tous_Rouge()
+        Tous_Noir()
     }
     if (receivedNumber == 8) {
         basic.showLeds(`
@@ -92,7 +89,7 @@ radio.onReceivedNumber(function (receivedNumber) {
             . . . . .
             . . . . .
             `)
-        Tous_Noir()
+        Tous_Rouge()
     }
     if (receivedNumber == 9) {
         basic.showLeds(`
@@ -102,7 +99,7 @@ radio.onReceivedNumber(function (receivedNumber) {
             . . . . .
             . . . . .
             `)
-        Pulvérisation_Bleue()
+        Tous_Noir()
     }
     if (receivedNumber == 10) {
         basic.showLeds(`
@@ -112,7 +109,7 @@ radio.onReceivedNumber(function (receivedNumber) {
             . . . . .
             . . . . .
             `)
-        Tous_Noir()
+        Pulvérisation_Bleue()
     }
     if (receivedNumber == 11) {
         basic.showLeds(`
@@ -122,10 +119,20 @@ radio.onReceivedNumber(function (receivedNumber) {
             . . . . .
             . . . . .
             `)
+        Tous_Noir()
+    }
+    if (receivedNumber == 12) {
+        basic.showLeds(`
+            # # # # #
+            # # # # #
+            # # . . .
+            . . . . .
+            . . . . .
+            `)
         Minuteur_30s()
         Tous_Vert()
     }
-    if (receivedNumber == 12) {
+    if (receivedNumber == 13) {
         basic.showLeds(`
             # # # # #
             # # # # #
@@ -190,6 +197,56 @@ function Initialisation_Branchements_Ruban () {
     strip4 = neopixel.create(DigitalPin.P2, 30, NeoPixelMode.RGB)
     strip5 = neopixel.create(DigitalPin.P0, 30, NeoPixelMode.RGB)
     strip6 = neopixel.create(DigitalPin.P2, 30, NeoPixelMode.RGB)
+}
+function Pulvérisation_Bleue2 () {
+    index = 0
+    for (let index = 0; index <= 60; index++) {
+        strip0.setPixelColor(index, neopixel.colors(NeoPixelColors.Blue))
+        strip0.show()
+        basic.pause(10)
+        index += 1
+    }
+    index = 0
+    while (index <= 29) {
+        strip1.setPixelColor(index, neopixel.colors(NeoPixelColors.Blue))
+        strip2.setPixelColor(index, neopixel.colors(NeoPixelColors.Blue))
+        strip1.show()
+        strip2.show()
+        basic.pause(10)
+        index += 1
+    }
+    index = 0
+    for (let index = 0; index <= 30; index++) {
+        strip0.setPixelColor(60 + index, neopixel.colors(NeoPixelColors.Blue))
+        strip0.show()
+        basic.pause(10)
+        index += 1
+    }
+    index = 0
+    while (index <= 29) {
+        strip3.setPixelColor(index, neopixel.colors(NeoPixelColors.Blue))
+        strip4.setPixelColor(index, neopixel.colors(NeoPixelColors.Blue))
+        strip3.show()
+        strip4.show()
+        basic.pause(10)
+        index += 1
+    }
+    index = 0
+    for (let index = 0; index <= 30; index++) {
+        strip0.setPixelColor(90 + index, neopixel.colors(NeoPixelColors.Blue))
+        strip0.show()
+        basic.pause(10)
+        index += 1
+    }
+    index = 0
+    while (index <= 29) {
+        strip5.setPixelColor(index, neopixel.colors(NeoPixelColors.Blue))
+        strip6.setPixelColor(index, neopixel.colors(NeoPixelColors.Blue))
+        strip5.show()
+        strip6.show()
+        basic.pause(10)
+        index += 1
+    }
 }
 input.onButtonPressed(Button.AB, function () {
     Tous_Noir()
@@ -281,6 +338,9 @@ function Tous_Rouge () {
     strip5.show()
     strip6.show()
 }
+/**
+ * Pour les rubans 30 Leds penser à enlever les ordres non nécessaire du démarrage
+ */
 function Poste_1 () {
     for (let index = 0; index <= 120; index++) {
         strip0.setPixelColor(index, neopixel.colors(NeoPixelColors.Green))
